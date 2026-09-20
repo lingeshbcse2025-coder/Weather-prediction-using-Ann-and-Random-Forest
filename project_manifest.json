@@ -1,0 +1,27 @@
+{
+  "name": "WeatherAI India",
+  "scope": "India-only, five cities (Mumbai, New Delhi, Kolkata, Chennai, Bangalore)",
+  "task": "rain_tomorrow binary classification",
+  "models": [
+    "Climatology (reference baseline)",
+    "Logistic Regression",
+    "Decision Tree",
+    "Random Forest",
+    "MLP (scikit-learn neural network)",
+    "Validation-selected probability ensemble (shipped only if it beats the best single model)"
+  ],
+  "frontend": "React + TypeScript + Vite",
+  "backend": "FastAPI",
+  "data_source": {
+    "production": "Open-Meteo Historical Weather API (ERA5 reanalysis), archive-api.open-meteo.com",
+    "rejected": "Kaggle: kalashnikov1405/rain-forecasting-in-india (synthetic; see docs/DECISIONS.md D-010)"
+  },
+  "excluded_data": [
+    "Australia",
+    "weatherAUS.csv",
+    "Rain in Australia",
+    "mixed-country datasets"
+  ],
+  "build_contract": "CLAUDE.md",
+  "current_model_version": "weatherai-india-1.0.0"
+}

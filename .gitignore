@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+build/
+dist/
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+kaggle.json
+*.pem
+
+# Node / frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+
+# Raw Open-Meteo cache: re-downloadable via `python -m weatherai.data.ingest`;
+# the provenance manifest (MANIFEST.json) IS committed.
+data/raw/open_meteo/*.json
+
+# Experiment scratch
+runs/
+*.log

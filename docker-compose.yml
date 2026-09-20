@@ -1,0 +1,29 @@
+# Production-shaped topology (docs/DEPLOYMENT_SPEC.md). Development does NOT use
+# this file -- run the Vite dev server and `uvicorn --reload` directly on the
+# host (see README.md "Development"). This compose file builds the frontend
+# static assets and runs FastAPI without reload behind nginx.
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: backend
+    environment:
+      WEATHERAI_CORS_ORIGINS: "http://localhost:8080"
+      WEATHERAI_ARTIFACTS_DIR: /app/artifacts
+      WEATHERAI_LOG_LEVEL: INFO
+    expose:
+      - "8000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
